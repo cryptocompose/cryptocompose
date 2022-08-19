@@ -1,5 +1,6 @@
 #!/bin/bash
-cd "$(dirname "$0")"
+echo Clone started...
+cd "$(dirname "$0")" && cd ../src
 
 declare -A dirs=(
   [bitcoind]="https://github.com/ruimarinho/docker-bitcoin-core ba147b689b9a78c60cf7d9fd5b20d8dfd2407e30"

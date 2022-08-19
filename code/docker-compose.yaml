@@ -9,7 +9,7 @@ services:
       args: 
         TARGETPLATFORM: ${TARGETPLATFORM}
     restart: always
-    stop_grace_period: 1m
+    stop_grace_period: 5m
     ports:
       - 8333:8333
     expose:

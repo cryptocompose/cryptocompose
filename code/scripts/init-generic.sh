@@ -1,7 +1,7 @@
 #!/bin/bash
-cd "$(dirname "$0")"
-
-find . -type f ! -name setup.sh -delete
+echo Generic init started...
+cd "$(dirname "$0")" && cd ../dynamic_config
+rm -rf *
 
 echo -n 'Domain: '
 read domain

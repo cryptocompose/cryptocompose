@@ -1,4 +1,5 @@
 #!/bin/bash
+echo LND init started
 cd "$(dirname "$0")"
 
 # lnd wallet, password
