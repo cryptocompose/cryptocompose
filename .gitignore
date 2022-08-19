@@ -1,0 +1,8 @@
+data/*
+!data/.gitkeep
+
+code/src/*
+!code/src/*.sh
+
+code/dynamic_config/*
+!code/dynamic_config/*.sh

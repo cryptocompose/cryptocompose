@@ -1,0 +1,53 @@
+version: '3.5'
+services:
+
+  bitcoind:
+    container_name: bitcoind
+    image: bitcoind:23.0
+    build: 
+      context: src/bitcoind
+      args: 
+        TARGETPLATFORM: ${TARGETPLATFORM}
+    restart: always
+    stop_grace_period: 1m
+    ports:
+      - 8333:8333
+    expose:
+      - 8332
+      - 28332
+      - 28333
+    networks:
+      - bitcoind
+    volumes:
+      - ../data/bitcoind/:/home/bitcoin/.bitcoin:rw # data
+      - ./dynamic_config/bitcoind.conf:/home/bitcoin/.bitcoin/bitcoin.conf:rw # config, rw to chown
+
+  lnd:
+    container_name: lnd
+    image: lnd:v0.15.0-beta
+    build:
+      context: src/lnd
+      args:
+        checkout: v0.15.0-beta
+    restart: always
+    stop_grace_period: 1m
+    depends_on:
+      - bitcoind
+    ports:
+      - 9735:9735
+    expose:
+      - 10009
+    networks:
+      - bitcoind
+      - lnd
+    volumes:
+      - ../data/lnd/:/root/.lnd:rw
+      - ./dynamic_config/lnd.conf:/root/.lnd/lnd.conf:ro
+
+networks:
+  bitcoind:
+    external: false
+    name: bitcoind
+  lnd:
+    external: false
+    name: lnd
