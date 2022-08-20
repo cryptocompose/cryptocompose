@@ -6,6 +6,8 @@ declare -A dirs=(
   [bitcoind]="https://github.com/ruimarinho/docker-bitcoin-core ba147b689b9a78c60cf7d9fd5b20d8dfd2407e30"
   [lnd]="https://github.com/lightningnetwork/lnd 909ba573ea49387171c143cb8c6759bc54fc82e4"
   [lndinit]="https://github.com/lightninglabs/lndinit 67e363ea8ab562609017f6946b2832c380c811e2"
+  [lndhub-tg]="https://github.com/yrzam/lndhub-tg dab3f6e93ee682c145326a2f1a03efd5e4c756c5"
+  [mongodb]="https://github.com/docker-library/mongo 52c402d3744a806411b65e5fc843c65a87d8012c"
 )
 
 function custom() {
@@ -13,6 +15,10 @@ function custom() {
   
   "bitcoind")
     mkdir ../tmp && mv * ../tmp && mv ../tmp/23/* . && rm -rf ../tmp
+  ;;
+
+  "mongodb")
+    mkdir ../tmp && mv * ../tmp && mv ../tmp/4.4/* . && rm -rf ../tmp
   ;;
   
   esac

@@ -44,6 +44,31 @@ services:
       - ../data/lnd/:/root/.lnd:rw
       - ./dynamic_config/lnd.conf:/root/.lnd/lnd.conf:ro
 
+  lndhub-tg:
+    container_name: lndhub-tg
+    image: lndhub-tg:v1.1.3
+    build: src/lndhub-tg
+    restart: always
+    stop_grace_period: 10s
+    env_file: dynamic_config/lndhub-tg.env
+    networks:
+      - mongodb
+
+  mongodb:
+    container_name: mongodb
+    image: mongodb:4.4
+    build: src/mongodb
+    restart: always
+    stop_grace_period: 1m
+    expose:
+      - 27017
+    env_file: dynamic_config/mongodb.env
+    networks:
+      - mongodb
+    volumes:
+      - ../data/mongodb/:/data/db:rw
+      - ./dynamic_config/mongo-auth.js:/docker-entrypoint-initdb.d/mongo-auth.js:ro
+
 networks:
   bitcoind:
     external: false
@@ -51,3 +76,6 @@ networks:
   lnd:
     external: false
     name: lnd
+  mongodb:
+    external: false
+    name: mongodb
