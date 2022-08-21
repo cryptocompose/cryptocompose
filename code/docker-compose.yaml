@@ -44,6 +44,30 @@ services:
       - ../data/lnd/:/root/.lnd:rw
       - ./dynamic_config/lnd.conf:/root/.lnd/lnd.conf:ro
 
+  lndhub:
+    container_name: lndhub
+    image: lndhub:1.4.1
+    build: src/lndhub
+    restart: always
+    stop_grace_period: 30s
+#    env_file: dynamic_config/lndhub.env
+    networks:
+      - lndhub
+
+  lndhub-redis:
+    container_name: lndhub-redis
+    image: redis:7.0-alpine
+    build: src/redis
+    restart: always
+    stop_grace_period: 30s
+    command: redis-server --appendonly yes --appendfsync always
+    expose:
+      - 6379
+    networks:
+      - lndhub
+    volumes:
+      - ../data/lndhub-redis/:/data:rw
+
   lndhub-tg:
     container_name: lndhub-tg
     image: lndhub-tg:v1.1.3
@@ -79,3 +103,6 @@ networks:
   mongodb:
     external: false
     name: mongodb
+  lndhub:
+    external: false
+    name: lndhub
