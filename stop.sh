@@ -7,4 +7,4 @@ set -a
 . $base/code/scripts/args.sh
 set +a
 
-docker-compose -f $base/code/docker-compose.yaml up -d
+docker-compose -f $base/code/docker-compose.yaml down

@@ -9,7 +9,7 @@ chbuild lndinit:$LNDINIT_VERSION src/lndinit "--build-arg checkout=$CORE_LNDINIT
 
 read -p "New seed (1), existing one(2) or skip(3)? " new_or_existing
 
-if [ $new_or_existing == 1 ]; then
+if [ "$new_or_existing" == 1 ]; then
 echo "===== SEED ====="
 docker run --rm -v $base/data/lnd:/root/.lnd:rw --entrypoint /bin/bash lndinit:$LNDINIT_VERSION -c "
   lndinit gen-password > /root/.lnd/wallet.password &&
@@ -24,7 +24,7 @@ docker run --rm -v $base/data/lnd:/root/.lnd:rw --entrypoint /bin/bash lndinit:$
 echo -e "\n================"
 read -p "Press enter to continue"
 
-elif [ $new_or_existing == 2 ]; then
+elif [ "$new_or_existing" == 2 ]; then
 read -p "Mode: existing. Please input seed: " seed
 docker run --rm -v $base/data/lnd:/root/.lnd:rw --entrypoint /bin/bash lndinit:$LNDINIT_VERSION -c "
   lndinit gen-password > /root/.lnd/wallet.password &&
