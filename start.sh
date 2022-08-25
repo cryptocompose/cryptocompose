@@ -1,9 +1,11 @@
 #!/bin/bash
 cd "$(dirname "$0")"
 
-# bitcoind builder
-if [ "$(arch)" == aarch64 ]; then export TARGETPLATFORM=linux/arm64
-elif [ "$(arch)" == x86_64 ];  then export TARGETPLATFORM=linux/amd64
-fi
+base=$(pwd)
+scripts=$base/code/scripts
 
-docker-compose -f code/docker-compose.yaml up -d
+set -a
+. $scripts/args.sh
+set +a
+
+docker-compose -f $base/code/docker-compose.yaml up -d

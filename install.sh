@@ -1,8 +1,16 @@
 #!/bin/bash
 cd "$(dirname "$0")"
 
-/bin/bash code/scripts/clone.sh
-/bin/bash code/scripts/init-base.sh
-/bin/bash code/scripts/init-lnd.sh
-/bin/bash code/scripts/init-lndhub-tg.sh
-/bin/bash code/scripts/init-mongodb.sh
+base=$(pwd)
+scripts=$base/code/scripts
+
+. $scripts/args.sh
+. $scripts/clone.sh
+. $scripts/init/base.sh
+. $scripts/init/bitcoind.sh
+. $scripts/init/lnd.sh
+. $scripts/init/lndhub.sh
+. $scripts/init/lndhub-tg.sh
+. $scripts/init/nginx.sh
+. $scripts/init/certbot.sh
+. $scripts/init/mongodb.sh
