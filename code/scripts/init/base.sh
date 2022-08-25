@@ -14,6 +14,7 @@ export LNDHUB_BASE_PATH=$LNDHUB_BASE_PATH
 # gen persistent
 if [ ! -f persistent.conf ]; then
     echo LNDHUBTG_DB_PWD=$(tr -dc A-Za-z0-9 </dev/urandom | head -c 16) >> persistent.conf
+    echo MONGODB_ROOT_PWD=$(tr -dc A-Za-z0-9 </dev/urandom | head -c 16) >> persistent.conf
 fi
 
 . ../scripts/args.sh
