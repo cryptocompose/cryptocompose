@@ -15,6 +15,7 @@ This repository contains scripts that will set up services in a strictly predefi
 * [nginx](https://github.com/nginxinc/docker-nginx)
 * [mongodb](https://github.com/mongodb/mongo)
 * [redis](https://github.com/redis/redis)
+
 More coming soon...
 
 ### Requirements
@@ -25,7 +26,6 @@ More coming soon...
 * Dedicated IP address. Static IP or domain recommended
 * Accessible ports: `80`, `443`, `8333`, `9735`
 * Docker, docker-compose, user in docker group
-<br> More coming soon...
 
 ### How to use
 1. Clone
