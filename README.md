@@ -1,6 +1,6 @@
 # cryptocompose
 
-**A set of scripts that allows to set up curated crypto services in a couple of commands. Created primarily for dev purposes**
+**A set of scripts that allows to set up curated crypto services in a couple of commands. Created primarily for dev purposes.**
 
 This repository contains scripts that will set up services in a strictly predefined way with chosen configuration. In order to change something you will have to edit the scripts. It does not create a new layer of abstraction, so that user is as close to the underlying software as possible.
 
@@ -12,9 +12,10 @@ This repository contains scripts that will set up services in a strictly predefi
 * [lnd](https://github.com/lightningnetwork/lnd)
 * [lndhub](https://github.com/BlueWallet/LndHub)
 * [lndhub-tg](https://github.com/yrzam/lndhub-tg)
-* [torproxy](https://github.com/dperson/torproxy)
 * [nginx](https://github.com/nginxinc/docker-nginx)
 * [mongodb](https://github.com/mongodb/mongo)
+* [redis](https://github.com/redis/redis)
+More coming soon...
 
 ### Requirements
 
@@ -24,6 +25,7 @@ This repository contains scripts that will set up services in a strictly predefi
 * Dedicated IP address. Static IP or domain recommended
 * Accessible ports: `80`, `443`, `8333`, `9735`
 * Docker, docker-compose, user in docker group
+More coming soon...
 
 ### How to use
 1. Clone
