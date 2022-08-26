@@ -23,4 +23,7 @@ echo Unpacking archive...
 sudo tar -xf ../backup.tar.gz --strip-components=1
 mv persistent.conf $base/code/dynamic_config/persistent.conf
 
-echo Done
+echo Done. Starting install script
+
+cd $base;
+. install.sh
