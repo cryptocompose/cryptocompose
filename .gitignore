@@ -6,3 +6,6 @@ code/src/*
 
 code/dynamic_config/*
 !code/dynamic_config/.gitkeep
+
+*.tar.gz
+*.gpg
