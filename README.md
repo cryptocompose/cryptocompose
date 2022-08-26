@@ -35,8 +35,8 @@ Use `bash stop.sh`, `bash backup.sh`, `bash restore-backup.sh` when needed
 
 * Minimal modification of the original code
 * Balance between security and complexity
-* Ease to customize, extend and backup
-* Ease to backup
+* Ease to customize or extend
+* Ease to backup and migrate
 
 ### How it works
 
