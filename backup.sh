@@ -6,8 +6,8 @@ echo Stopping containers...
 . stop.sh 2>/dev/null
 cd $base
 
-cp code/dynamic_config/persistent.conf data/persistent.conf
 echo -e Creating backup...
+cp code/dynamic_config/persistent.conf data/persistent.conf
 sudo tar -czf backup.tar.gz \
   --exclude=data/bitcoind \
   --exclude=data/mongodb/journal \
