@@ -15,3 +15,5 @@ sudo tar -czf backup.tar.gz \
   --exclude=data/.gitkeep \
   data
 rm data/persistent.conf
+
+echo Done

@@ -19,5 +19,8 @@ fi
 echo Removing existing data...
 sudo find . -maxdepth 1 ! -name bitcoind -type d -not -path '.' -exec rm -rf {} +
 
-#echo Unpacking archive...
-#sudo tar -xf ../backup.tar --strip-components=1
+echo Unpacking archive...
+sudo tar -xf ../backup.tar.gz . --strip-components=1
+mv persistent.conf $base/code/dynamic_config/persistent.conf
+
+echo Done
