@@ -25,5 +25,5 @@ mv persistent.conf $base/code/dynamic_config/persistent.conf
 
 echo Done. Starting install script
 
-cd $base;
+cd $base
 . install.sh
