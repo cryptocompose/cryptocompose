@@ -10,11 +10,9 @@ This repository contains scripts that will set up services in a strictly predefi
 
 * [bitcoind](https://github.com/bitcoin/bitcoin) (full node)
 * [lnd](https://github.com/lightningnetwork/lnd)
-* [lndhub](https://github.com/BlueWallet/LndHub) (adapted via [fork](https://github.com/yrzam/lndhub))
-* [lndhub-tg](https://github.com/yrzam/lndhub-tg)
-* [nginx](https://github.com/nginxinc/docker-nginx)
-* [mongodb](https://github.com/mongodb/mongo)
-* [redis](https://github.com/redis/redis)
+* [lndhub](https://github.com/BlueWallet/LndHub) (adapted via [fork](https://github.com/yrzam/lndhub)), [lndhub-tg](https://github.com/yrzam/lndhub-tg)
+* [nginx](https://github.com/nginxinc/docker-nginx), [certbot](https://github.com/certbot/certbot)
+* [mongodb](https://github.com/mongodb/mongo), [redis](https://github.com/redis/redis)
 
 More coming soon...
 
