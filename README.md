@@ -6,7 +6,6 @@ This repository contains scripts that will set up services in a strictly predefi
 
 > If you want more user-friendly and easily customizable solution, please see [Umbrel](https://umbrel.com).
 
-
 ### Includes:
 
 * [bitcoind](https://github.com/bitcoin/bitcoin) (full node)
@@ -23,7 +22,14 @@ This repository contains scripts that will set up services in a strictly predefi
 * Linux
 * Enough storage for the full Bitcoin node
 * Dedicated IP address. Static IP or domain recommended
+* Accessible ports: `80`, `443`, `8333`, `9735`
 * Docker, docker-compose, user in docker group
+
+### How to use
+1. Clone
+2. run `bash install.sh`, answer the questions
+3. run `bash start.sh`
+Use `bash stop.sh`, `bash backup.sh`, `bash restore-backup.sh` when needed
 
 ### Principles
 
@@ -38,7 +44,7 @@ When you run `install.sh`:
 
 1. Dynamic configuration is generated
 2. Source repositories are downloaded or upgraded (some of them just point to binaries, todo improve)
-3. Data is initialized (wallet seed, etc.)
+3. Data is initialized (wallet seed, letsencrypt cert, etc.)
 
 When you run `start.sh`
 

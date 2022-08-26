@@ -4,6 +4,10 @@ cd $base/code/dynamic_config
 
 find . ! -name persistent.conf ! -name .gitkeep ! -name versions.conf -type f -delete
 
+echo Important: please make the following ports accessible:
+echo 80, 443, 8333, 9735
+read -p "Press enter to continue"
+
 read -p "Domain: " domain
 export DOMAIN=$domain
 
