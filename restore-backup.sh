@@ -18,12 +18,11 @@ fi
 
 echo Removing existing data...
 sudo find . -maxdepth 1 ! -name bitcoind -type d -not -path '.' -exec rm -rf {} +
+rm -rf $base/code/dynamic_config/*
 
 echo Unpacking archive...
 sudo tar -xf ../backup.tar.gz --strip-components=1
-mv persistent.conf $base/code/dynamic_config/persistent.conf
+mv -r dynamic_config/* $base/code/dynamic_config
+rm -d dynamic_config
 
-echo Done. Starting install script
-
-cd $base
-. install.sh
+echo Done

@@ -7,13 +7,13 @@ echo Stopping containers...
 cd $base
 
 echo Creating backup...
-cp code/dynamic_config/persistent.conf data/persistent.conf
+cp -r code/dynamic_config data/dynamic_config && rm data/dynamic_config/.gitkeep
 sudo tar -czf backup.tar.gz \
   --exclude=data/bitcoind \
   --exclude=data/mongodb/journal \
   --exclude=data/mongodb/diagnostic.data \
   --exclude=data/.gitkeep \
   data
-rm data/persistent.conf
+rm -rf data/dynamic_config
 
 echo Done
