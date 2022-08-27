@@ -23,12 +23,13 @@ if [ ! -e "$certbot_data_path/conf/options-ssl-nginx.conf" ] || [ ! -e "$certbot
   curl -s https://raw.githubusercontent.com/certbot/certbot/master/certbot/certbot/ssl-dhparams.pem > "$certbot_data_path/conf/ssl-dhparams.pem"
 fi
 
-certbot_volumes="-v \"$certbot_data_path/conf/:/etc/letsencrypt:rw\" -v \"$certbot_data_path/www:/var/www/certbot:rw\""
+cb_vol1="$certbot_data_path/conf/:/etc/letsencrypt:rw"
+cb_vol2="$certbot_data_path/www:/var/www/certbot:rw"
 
 echo Creating temp certificate
 path="/etc/letsencrypt/live/$domain"
 mkdir -p "$certbot_data_path/conf/live/$domain"
-docker run $certbot_volumes --rm --entrypoint /bin/bash certbot:$CERTBOT_VERSION -c " \
+docker run -v "$cb_vol1" --rm --entrypoint /bin/bash certbot:$CERTBOT_VERSION -c " \
   openssl req -x509 -nodes -newkey rsa:4096 -days 1 \
     -keyout '$path/privkey.pem' \
     -out '$path/fullchain.pem' \
@@ -42,13 +43,13 @@ docker run \
   -v "$base/data/certbot/conf/:/etc/nginx/ssl/:ro" \
   --name nginx-certbot -p 80:80 -d nginx:$NGINX_VERSION
 
-docker run $certbot_volumes --rm --entrypoint /bin/bash certbot:$CERTBOT_VERSION -c " \
+docker run -v "$cb_vol1" --rm --entrypoint /bin/bash certbot:$CERTBOT_VERSION -c " \
   rm -rf /etc/letsencrypt/live/$domain && \
   rm -rf /etc/letsencrypt/archive/$domain && \
   rm -rf /etc/letsencrypt/renewal/$domain.conf"
 
 echo Requesting Lets Encrypt certificate...
-docker run $certbot_volumes --rm --entrypoint /bin/bash certbot:$CERTBOT_VERSION -c " \
+docker run -v "$cb_vol1" -v "$cb_vol2" --rm --entrypoint /bin/bash certbot:$CERTBOT_VERSION -c " \
   certbot certonly --webroot -w /var/www/certbot \
     --email $email \
     -d $domain \
@@ -59,3 +60,4 @@ docker run $certbot_volumes --rm --entrypoint /bin/bash certbot:$CERTBOT_VERSION
 echo Stopping nginx
 docker stop nginx-certbot && docker rm nginx-certbot 
 echo ''
+
