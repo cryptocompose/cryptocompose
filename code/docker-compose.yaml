@@ -40,6 +40,8 @@ services:
     networks:
       - bitcoind
       - lnd
+    depends_on:
+      - bitcoind
     volumes:
       - ../data/lnd/:/root/.lnd:rw
       - ./dynamic_config/lnd.conf:/root/.lnd/lnd.conf:ro
@@ -54,6 +56,10 @@ services:
     networks:
       - lnd
       - lndhub
+      - nginx
+    depends_on:
+      - lnd
+      - lndhub-redis
       - nginx
     volumes:
       - ../data/lnd:/lnd:ro
@@ -80,6 +86,8 @@ services:
     stop_grace_period: 10s
     env_file: dynamic_config/lndhub-tg.env
     networks:
+      - mongodb
+    depends_on:
       - mongodb
 
   nginx:
@@ -109,6 +117,8 @@ services:
     stop_grace_period: 1m
     entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
     networks:
+      - nginx
+    depends_on:
       - nginx
     volumes:
       - ../data/certbot/www/:/var/www/certbot/:rw
