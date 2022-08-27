@@ -1,10 +1,10 @@
 #!/bin/bash
 cd "$(dirname "$0")"
 
-base=$(pwd)
+base="$(pwd)"
 
-set -a
-. $base/code/scripts/args.sh
-set +a
+set -ae
+. "$base/code/scripts/args.sh"
+set +ae
 
-docker-compose -f $base/code/docker-compose.yaml up -d
+docker-compose -f "$base/code/docker-compose.yaml" up -d

@@ -1,6 +1,6 @@
 #!/bin/bash
 echo Nginx init started...
-cd $base/code/dynamic_config
+cd "$base/code/dynamic_config"
 
 envsubst '${DOMAIN} ${LNDHUB_BASE_PATH}' < ../config/nginx.conf > nginx.conf
 

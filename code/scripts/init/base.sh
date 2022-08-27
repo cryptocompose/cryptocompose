@@ -1,6 +1,6 @@
 #!/bin/bash
 echo Base init started...
-cd $base/code/dynamic_config
+cd "$base/code/dynamic_config"
 
 find . ! -name persistent.conf ! -name .gitkeep ! -name versions.conf -type f -delete
 

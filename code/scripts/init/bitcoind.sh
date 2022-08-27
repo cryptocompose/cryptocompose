@@ -1,6 +1,6 @@
 #!/bin/bash
 echo Bitcoind init started...
-cd $base/code/dynamic_config
+cd "$base/code/dynamic_config"
 
 envsubst < ../config/bitcoind.conf > bitcoind.conf
 

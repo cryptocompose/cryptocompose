@@ -1,10 +1,10 @@
 #!/bin/bash
 cd "$(dirname "$0")"
 
-base=$(pwd)
+base="$(pwd)"
 echo Stopping containers...
 . stop.sh 2>/dev/null
-cd $base
+cd "$base"
 
 echo Creating backup...
 sudo tar -czf backup.tar.gz \

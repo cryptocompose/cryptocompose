@@ -1,6 +1,6 @@
 #!/bin/bash
 echo LND init started
-cd $base/code
+cd "$base/code"
 
 envsubst < config/lnd.conf > dynamic_config/lnd.conf
 
@@ -11,7 +11,7 @@ read -p "New seed (1), existing one(2) or skip(3)? " new_or_existing
 
 if [ "$new_or_existing" == 1 ]; then
 echo "===== SEED ====="
-docker run --rm -v $base/data/lnd:/root/.lnd:rw --entrypoint /bin/bash lndinit:$LNDINIT_VERSION -c "
+docker run --rm -v "$base/data/lnd:/root/.lnd:rw" --entrypoint /bin/bash lndinit:$LNDINIT_VERSION -c "
   lndinit gen-password > /root/.lnd/wallet.password &&
   lndinit gen-seed > /root/.lnd/seed &&
   lndinit init-wallet \
@@ -26,7 +26,7 @@ read -p "Press enter to continue"
 
 elif [ "$new_or_existing" == 2 ]; then
 read -p "Mode: existing. Please input seed: " seed
-docker run --rm -v $base/data/lnd:/root/.lnd:rw --entrypoint /bin/bash lndinit:$LNDINIT_VERSION -c "
+docker run --rm -v "$base/data/lnd:/root/.lnd:rw" --entrypoint /bin/bash lndinit:$LNDINIT_VERSION -c "
   lndinit gen-password > /root/.lnd/wallet.password &&
   echo $seed > /root/.lnd/seed &&
   lndinit init-wallet \

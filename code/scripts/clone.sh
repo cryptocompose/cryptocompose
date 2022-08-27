@@ -1,6 +1,6 @@
 #!/bin/bash
 echo -e "Clone started...\n"
-cd $base/code/src
+cd "$base/code/src"
 
 declare -A dirs=(
   [bitcoind]="https://github.com/ruimarinho/docker-bitcoin-core ba147b689b9a78c60cf7d9fd5b20d8dfd2407e30"

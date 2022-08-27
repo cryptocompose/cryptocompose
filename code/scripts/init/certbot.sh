@@ -1,8 +1,8 @@
 #!/bin/bash
 echo Certbot init started
-cd $base
+cd "$base"
 
-certbot_data_path=$(pwd)/data/certbot
+certbot_data_path="$base/data/certbot"
 
 if [ -d "$certbot_data_path" ]; then
   read -p "Existing cettificate found. Continue and replace certificate? (y/n) " decision
@@ -23,7 +23,7 @@ if [ ! -e "$certbot_data_path/conf/options-ssl-nginx.conf" ] || [ ! -e "$certbot
   curl -s https://raw.githubusercontent.com/certbot/certbot/master/certbot/certbot/ssl-dhparams.pem > "$certbot_data_path/conf/ssl-dhparams.pem"
 fi
 
-certbot_volumes="-v $certbot_data_path/conf/:/etc/letsencrypt:rw -v $certbot_data_path/www:/var/www/certbot:rw"
+certbot_volumes="-v \"$certbot_data_path/conf/:/etc/letsencrypt:rw\" -v \"$certbot_data_path/www:/var/www/certbot:rw\""
 
 echo Creating temp certificate
 path="/etc/letsencrypt/live/$domain"
@@ -37,9 +37,9 @@ docker run $certbot_volumes --rm --entrypoint /bin/bash certbot:$CERTBOT_VERSION
 echo Starting nginx
 envsubst < code/config/nginx-init-certbot.conf > code/dynamic_config/nginx-init-certbot.conf
 docker run \
-  -v $base/code/dynamic_config/nginx-init-certbot.conf:/etc/nginx/conf.d/default.conf:ro \
-  -v $base/data/certbot/www:/var/www/certbot/:ro \
-  -v $base/data/certbot/conf/:/etc/nginx/ssl/:ro \
+  -v "$base/code/dynamic_config/nginx-init-certbot.conf:/etc/nginx/conf.d/default.conf:ro" \
+  -v "$base/data/certbot/www:/var/www/certbot/:ro" \
+  -v "$base/data/certbot/conf/:/etc/nginx/ssl/:ro" \
   --name nginx-certbot -p 80:80 -d nginx:$NGINX_VERSION
 
 docker run $certbot_volumes --rm --entrypoint /bin/bash certbot:$CERTBOT_VERSION -c " \
