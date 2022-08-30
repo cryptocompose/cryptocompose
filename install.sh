@@ -13,6 +13,7 @@ set -e
 . "$scripts/init/lnd.sh"
 . "$scripts/init/lndhub.sh"
 . "$scripts/init/lndhub-tg.sh"
+. "$scripts/init/thunderhub.sh"
 . "$scripts/init/nginx.sh"
 . "$scripts/init/certbot.sh"
 . "$scripts/init/mongodb.sh"

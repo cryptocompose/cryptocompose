@@ -1,0 +1,3 @@
+accounts:
+  - name: admin
+    password: "{YML_ENV_1}"

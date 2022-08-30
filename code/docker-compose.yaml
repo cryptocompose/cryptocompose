@@ -90,6 +90,23 @@ services:
     depends_on:
       - mongodb
 
+  thunderhub:
+    container_name: thunderhub
+    image: thunderhub:${THUNDERHUB_VERSION}
+    build: src/thunderhub
+    restart: always
+    stop_grace_period: 10s
+    env_file: dynamic_config/thunderhub.env
+    networks:
+      - lnd
+      - nginx
+    volumes:
+      - ../data/lnd:/lnd:ro
+      - ./config/thunderhub-accounts.yaml:/var/thunderhub-accounts.yaml
+    depends_on:
+      - lnd
+      - nginx
+
   nginx:
     container_name: nginx
     image: nginx:${NGINX_VERSION}

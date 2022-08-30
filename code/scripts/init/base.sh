@@ -11,9 +11,14 @@ read -p "Press enter to continue"
 read -p "Domain: " domain
 export DOMAIN=$domain
 
-read -p "LndHub url path (no trailing slash): /" LNDHUB_BASE_PATH
-LNDHUB_BASE_PATH=/$LNDHUB_BASE_PATH
-export LNDHUB_BASE_PATH=$LNDHUB_BASE_PATH
+read -p "LndHub url path (no trailing slash): /" lndhub_base_path
+lndhub_base_path=/$lndhub_base_path
+export LNDHUB_BASE_PATH=$lndhub_base_path
+
+read -p "Thunderhub url path (no trailing slash): /" thunderhub_base_path
+thunderhub_base_path=/$thunderhub_base_path
+export THUNDERHUB_BASE_PATH=$thunderhub_base_path
+
 
 # gen persistent
 if [ ! -f persistent.conf ]; then
