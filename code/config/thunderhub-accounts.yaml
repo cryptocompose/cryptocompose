@@ -1,3 +1,5 @@
 accounts:
   - name: admin
-    password: "{YML_ENV_1}"
+    password: $THUNDERHUB_PWD
+    serverUrl: lnd:10009
+    lndDir: /lnd

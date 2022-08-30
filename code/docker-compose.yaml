@@ -93,7 +93,10 @@ services:
   thunderhub:
     container_name: thunderhub
     image: thunderhub:${THUNDERHUB_VERSION}
-    build: src/thunderhub
+    build:
+      context: src/thunderhub
+      args:
+        BASE_PATH: ${THUNDERHUB_BASE_PATH}
     restart: always
     stop_grace_period: 10s
     env_file: dynamic_config/thunderhub.env
@@ -102,7 +105,7 @@ services:
       - nginx
     volumes:
       - ../data/lnd:/lnd:ro
-      - ./config/thunderhub-accounts.yaml:/var/thunderhub-accounts.yaml
+      - ./dynamic_config/thunderhub-accounts.yaml:/var/thunderhub-accounts.yaml
     depends_on:
       - lnd
       - nginx

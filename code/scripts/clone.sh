@@ -8,6 +8,7 @@ declare -A dirs=(
   [lndinit]="https://github.com/lightninglabs/lndinit 67e363ea8ab562609017f6946b2832c380c811e2"
   [lndhub]="https://github.com/yrzam/lndhub f0e2c873895dd2790ae2abb1041be7d6f520032d"
   [lndhub-tg]="https://github.com/yrzam/lndhub-tg dab3f6e93ee682c145326a2f1a03efd5e4c756c5"
+  [thunderhub]="https://github.com/apotdevin/thunderhub 8d45e297e4b2140b3be3b4adca65aa3dcc0d93cc"
   [nginx]="https://github.com/nginxinc/docker-nginx f3d86e99ba2db5d9918ede7b094fcad7b9128cd8"
   [certbot]="https://github.com/certbot/certbot cb632c376f17dfd75306020a17248f3c33c1ab2f"
   [redis]="https://github.com/docker-library/redis 5c0bbb5dfce3d4999649cbc3ba8bf7c123bcadff"
