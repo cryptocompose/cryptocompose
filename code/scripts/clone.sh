@@ -11,6 +11,7 @@ declare -A dirs=(
   [thunderhub]="https://github.com/apotdevin/thunderhub 8d45e297e4b2140b3be3b4adca65aa3dcc0d93cc"
   [nginx]="https://github.com/nginxinc/docker-nginx f3d86e99ba2db5d9918ede7b094fcad7b9128cd8"
   [certbot]="https://github.com/certbot/certbot cb632c376f17dfd75306020a17248f3c33c1ab2f"
+  [tor]="https://github.com/osminogin/docker-tor-simple a3726ade190f97d666300c9d724dad4e074517a0"
   [redis]="https://github.com/docker-library/redis 5c0bbb5dfce3d4999649cbc3ba8bf7c123bcadff"
   [mongodb]="https://github.com/docker-library/mongo 52c402d3744a806411b65e5fc843c65a87d8012c"
 )

@@ -18,6 +18,7 @@ services:
       - 28333
     networks:
       - bitcoind
+      - tor
     volumes:
       - ../data/bitcoind/:/home/bitcoin/.bitcoin:rw # data
       - ./dynamic_config/bitcoind.conf:/home/bitcoin/.bitcoin/bitcoin.conf:rw # config, rw to chown
@@ -40,6 +41,7 @@ services:
     networks:
       - bitcoind
       - lnd
+      - tor
     depends_on:
       - bitcoind
     volumes:
@@ -143,6 +145,20 @@ services:
     volumes:
       - ../data/certbot/www/:/var/www/certbot/:rw
       - ../data/certbot/conf/:/etc/letsencrypt/:rw
+  
+  tor:
+    container_name: tor
+    image: tor:${TOR_VERSION}
+    build: src/tor
+    restart: always
+    stop_grace_period: 30s
+    expose:
+      - 9050
+      - 9051
+    networks:
+      - tor
+    volumes:
+      - ./config/torrc:/etc/tor/torrc:ro
 
   mongodb:
     container_name: mongodb
@@ -172,6 +188,9 @@ networks:
   nginx:
     external: false
     name: nginx
+  tor:
+    external: false
+    name: tor
   mongodb:
     external: false
     name: mongodb
