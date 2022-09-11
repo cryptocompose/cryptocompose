@@ -158,7 +158,7 @@ services:
     networks:
       - tor
     volumes:
-      - ./config/torrc:/etc/tor/torrc:ro
+      - ./dynamic_config/torrc:/etc/tor/torrc:ro
 
   mongodb:
     container_name: mongodb

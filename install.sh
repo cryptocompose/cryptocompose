@@ -16,6 +16,7 @@ set -e
 . "$scripts/init/thunderhub.sh"
 . "$scripts/init/nginx.sh"
 . "$scripts/init/certbot.sh"
+. "$scripts/init/tor.sh"
 . "$scripts/init/mongodb.sh"
 
 set +e
