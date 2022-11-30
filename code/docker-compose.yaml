@@ -29,7 +29,7 @@ services:
     build:
       context: src/lnd
       args:
-        checkout: v0.15.0-beta
+        checkout: ${CORE_LND_VERSION}
     restart: always
     stop_grace_period: 1m
     depends_on:
